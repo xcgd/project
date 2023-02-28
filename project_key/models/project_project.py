@@ -150,7 +150,9 @@ class Project(models.Model):
             config["demo"].get("project_key") and not test_project_key
         ):
             return False
-        return self.sudo().task_key_sequence_id.next_by_id()
+        task_key_sequence_id = self.sudo().task_key_sequence_id
+        assert task_key_sequence_id, _("Key sequence must exist.")
+        return task_key_sequence_id.next_by_id()
 
     def generate_project_key(self, text):
         test_project_key = self.env.context.get("test_project_key")
