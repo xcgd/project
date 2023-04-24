@@ -3,7 +3,7 @@
 
 {
     "name": "Project - Create Purchase Orders with Analytic Account",
-    "version": "15.0.1.0.0",
+    "version": "15.0.1.0.1",
     "author": "Camptocamp, Odoo Community Association (OCA)",
     "maintainer": "Camptocamp",
     "license": "AGPL-3",
@@ -14,4 +14,5 @@
     "data": [],
     "installable": True,
     "auto_install": False,
+    "maintainers": ["yankinmax"],
 }
