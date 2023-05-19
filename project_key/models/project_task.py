@@ -67,7 +67,7 @@ class Task(models.Model):
         args = args or []
         domain = []
         if name:
-            domain = ["|", ("key", "=ilike", name + "%"), ("name", operator, name)]
+            domain = ["|", ("key", "=ilike", "%" + name + "%"), ("name", operator, name)]
             if operator in expression.NEGATIVE_TERM_OPERATORS:
                 domain = ["&", "!"] + domain[1:]
         tasks = self.search(domain + args, limit=limit)
