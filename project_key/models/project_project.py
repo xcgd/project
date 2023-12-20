@@ -30,16 +30,18 @@ class Project(models.Model):
             else:
                 rec.key = ""
 
-    @api.model
-    def create(self, vals):
-        if "key" not in vals:
-            vals["key"] = self.generate_project_key(vals["name"])
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list :
+            key = vals.get("key", False)
+            if not key:
+                vals["key"] = self.generate_project_key(vals["name"])
 
-        # Tasks must be created after the project.
-        if "task_ids" in vals:
-            task_vals = vals.pop("task_ids")
-        else:
-            task_vals = []
+            # Tasks must be created after the project.
+            if vals.get("task_ids", False):
+                task_vals = vals.pop("task_ids")
+            else:
+                task_vals = []
 
         # The key sequences to create stories and tasks with keys, created with
         # a project, must be linked to the project company to avoid security

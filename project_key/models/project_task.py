@@ -21,20 +21,20 @@ class Task(models.Model):
         for task in self:
             task.url = TASK_URL % (task.id, action_id)
 
-    @api.model
-    def create(self, vals):
-        get = self.env.context.get
+    @api.model_create_multi
+    def create(self, vals_list):
+        ctx = self.env.context.get
+        for vals in vals_list :
+            project_id = vals.get("project_id", False)
+            if not project_id:
+                project_id = ctx("default_project_id", False)
 
-        project_id = vals.get("project_id", False)
-        if not project_id:
-            project_id = get("default_project_id", False)
+            if not project_id and ctx("active_model", False) == "project.project":
+                project_id = ctx("active_id", False)
 
-        if not project_id and get("active_model", False) == "project.project":
-            project_id = get("active_id", False)
-
-        if project_id:
-            project = self.env["project.project"].browse(project_id)
-            vals["key"] = project.get_next_task_key()
+            if project_id:
+                project = self.env["project.project"].browse(project_id)
+                vals["key"] = project.get_next_task_key()
         return super(Task, self).create(vals)
 
     def write(self, vals):
