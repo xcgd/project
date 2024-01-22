@@ -12,6 +12,8 @@ class Task(models.Model):
 
     key = fields.Char(size=20, required=False, index=True)
 
+    parent_task_key = fields.Char(string="Parent task key", related="parent_id.key")
+
     url = fields.Char(string="URL", compute="_compute_task_url")
 
     _sql_constraints = [("task_key_unique", "UNIQUE(key)", "Task key must be unique!")]
@@ -24,7 +26,7 @@ class Task(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         ctx = self.env.context.get
-        for vals in vals_list :
+        for vals in vals_list:
             project_id = vals.get("project_id", False)
             if not project_id:
                 project_id = ctx("default_project_id", False)

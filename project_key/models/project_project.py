@@ -32,7 +32,7 @@ class Project(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        for vals in vals_list :
+        for vals in vals_list:
             key = vals.get("key", False)
             if not key:
                 vals["key"] = self.generate_project_key(vals["name"])

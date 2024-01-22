@@ -41,9 +41,10 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
-            <field name="name" position="before">
-                <field name="key" readonly="1" nolabel="1" class="oe_read_only" />
-            </field>
+            <xpath
+                expr="//page[@name='sub_tasks_page']/field[@name='child_ids']/tree/field[@name='name']"
+                position="before"
+            ><field name="key" /></xpath>
         </field>
     </record>
     <record id="view_task_tree2_extend_with_key" model="ir.ui.view">
@@ -77,14 +78,24 @@
             <field name="color" position="after">
                 <field name="url" />
                 <field name="key" />
+                <field name="parent_task_key" />
             </field>
             <xpath
                 expr="//t[@t-name='kanban-box']//field[@name='name']/parent::s/parent::strong"
                 position="before"
             >
-                <a t-att-href="record.url.raw_value">
+                <a t-att-href="record.url.raw_value" style="margin-right:5px">
                     <field name="key" />
                 </a>
+            </xpath>
+            <xpath
+                expr="//div[hasclass('oe_kanban_bottom_right')]/field[@name='kanban_state']"
+                position="before"
+            >
+                <span
+                    t-if="record.parent_task_key.value"
+                    style="margin-right:3px"
+                > <field name="parent_task_key" /></span>
             </xpath>
         </field>
     </record>
@@ -107,7 +118,9 @@
                 <field name="key" />
             </field>
             <xpath expr="//t[@t-esc='record.display_name.value']" position="before">
-                <t t-esc="record.key.value" /> - </xpath>
+                <span t-if="record.key.value" style="margin-right:3px"> <t
+                        t-esc="record.key.value"
+                    /> - </span> </xpath>
         </field>
     </record>
 </odoo>
