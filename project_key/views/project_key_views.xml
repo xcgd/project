@@ -76,7 +76,8 @@
         <field name="inherit_id" ref="project.view_task_kanban" />
         <field name="arch" type="xml">
             <field name="color" position="after">
-                <field name="url" />
+                <field name="task_url" />
+                <field name="parent_task_url" />
                 <field name="key" />
                 <field name="parent_task_key" />
             </field>
@@ -84,7 +85,7 @@
                 expr="//t[@t-name='kanban-box']//field[@name='name']/parent::s/parent::strong"
                 position="before"
             >
-                <a t-att-href="record.url.raw_value" style="margin-right:5px">
+                <a t-att-href="record.task_url.raw_value" style="margin-right:5px">
                     <field name="key" />
                 </a>
             </xpath>
@@ -92,10 +93,11 @@
                 expr="//div[hasclass('oe_kanban_bottom_right')]/field[@name='kanban_state']"
                 position="before"
             >
-                <span
+                <a
+                    t-att-href="record.parent_task_url.raw_value"
                     t-if="record.parent_task_key.value"
                     style="margin-right:3px"
-                > <field name="parent_task_key" /></span>
+                > <field name="parent_task_key" /></a>
             </xpath>
         </field>
     </record>
