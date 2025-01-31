@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 XCG Consulting - Houzéfa Abbasbhay
+License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="project_planning_search" model="ir.ui.view">
+        <field name="name">project_planning_search</field>
+        <field name="model">project.planning</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="project_id" />
+                <field name="task_id" />
+            </search>
+        </field>
+    </record>
+
+    <record id="project_planning_jsgantt" model="ir.ui.view">
+        <field name="name">project_planning_jsgantt</field>
+        <field name="model">project.planning</field>
+        <field name="arch" type="xml">
+            <jsgantt>
+                <field name="name" mapping="name" />
+                <field name="parent_id" mapping="parent_id" />
+                <field name="is_parent" mapping="is_parent" />
+                <field name="is_expanded" mapping="is_expanded" />
+                <field name="resource_id" mapping="resource_id" />
+                <field name="start_date" mapping="start_date" />
+                <field name="end_date" mapping="end_date" />
+                <field name="plan_start_date" mapping="plan_start_date" />
+                <field name="plan_end_date" mapping="plan_end_date" />
+            </jsgantt>
+        </field>
+    </record>
+
+    <record id="project_planning_action" model="ir.actions.act_window">
+        <field name="name">Project Planning</field>
+        <field name="res_model">project.planning</field>
+        <field name="view_mode">jsgantt</field>
+    </record>
+    <menuitem
+        id="project_planning_menu"
+        action="project_planning_action"
+        parent="project.menu_project_report"
+        sequence="5"
+    />
+</odoo>
