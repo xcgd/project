@@ -10,5 +10,5 @@
     "author": "XCG Consulting, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "depends": ["project", "web_jsgantt"],
-    "data": ["security/ir.model.access.csv", "views/project_planning_views.xml"],
+    "data": ["security/ir.model.access.csv", "views/project_planning_views.xml", "views/project_task_views.xml", "views/project_project_views.xml"],
 }
