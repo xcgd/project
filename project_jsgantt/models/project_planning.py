@@ -20,10 +20,54 @@ class ProjectPlanning(models.Model):
     end_date = fields.Datetime()
     plan_start_date = fields.Date()
     plan_end_date = fields.Date()
+    color_class = fields.Char(
+        compute="_compute_color_class",
+        string="CSS Color Class",
+        help="CSS class for task/project color",
+    )
+    dependency_ids = fields.Many2many(
+        comodel_name="project.planning",
+        relation="project_planning_dependency_rel",
+        column1="planning_id",
+        column2="dependency_id",
+        string="Dependencies",
+        help="Task dependencies based on task links",
+    )
+
+    def _compute_color_class(self):
+        for record in self:
+            color = None
+            if record.task_id and record.task_id.sudo().gantt_color:
+                color = record.task_id.sudo().gantt_color
+            elif record.project_id and record.project_id.sudo().gantt_color:
+                color = record.project_id.sudo().gantt_color
+
+            record.color_class = f"gtask{color}" if color else None
 
     def init(self):
         tools.drop_view_if_exists(self._cr, self._table)
         self._cr.execute(f"create view {self._table} as {self._get_sql_view_query()}")
+
+        tools.drop_view_if_exists(self._cr, "project_planning_dependency_rel")
+        self._cr.execute(self._get_dependency_relation_view_query())
+
+    def _get_dependency_relation_view_query(self):
+        """Return SQL query for creating the task dependencies relationship view"""
+        return f"""
+            CREATE VIEW project_planning_dependency_rel AS (
+                SELECT
+                    {_TASK_ID_OFFSET} + origin_task.id AS planning_id,
+                    {_TASK_ID_OFFSET} + target_task.id AS dependency_id
+                FROM task_dependencies_rel AS tdr
+                JOIN project_task AS origin_task ON tdr.task_id = origin_task.id
+                JOIN project_task AS target_task ON tdr.depends_on_id = target_task.id
+                WHERE
+                    origin_task.active = TRUE AND
+                    target_task.active = TRUE AND
+                    NOT origin_task.is_closed AND
+                    NOT target_task.is_closed
+            )
+        """
 
     def _get_sql_view_query(self):
         query = f"""
@@ -74,6 +118,34 @@ class ProjectPlanning(models.Model):
         where task.active and not task.is_closed
         """
         return query
+
+    def open_record(self):
+        """Open the related record based on its type"""
+        self.ensure_one()
+        view_id = False
+        res_id = False
+        model_name = False
+
+        if self.task_id:
+            res_id = self.task_id.id
+            model_name = "project.task"
+            view_id = self.env.ref("project.project.view_task_form2", False)
+        elif self.project_id:
+            res_id = self.project_id.id
+            model_name = "project.project"
+            view_id = self.env.ref("project.project.edit_project", False)
+
+        if not model_name or not res_id:
+            return False
+
+        return {
+            "type": "ir.actions.act_window",
+            "res_model": model_name,
+            "view_mode": "form",
+            "res_id": res_id,
+            "views": [(view_id.id if view_id else False, "form")],
+            "target": "current",
+        }
 
 
 _TASK_ID_OFFSET = 1000000

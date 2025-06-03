@@ -1,11 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <!-- Override the project.project form view -->
     <record id="project_project_view_form_inherit" model="ir.ui.view">
         <field name="name">project.project.form.inherit</field>
         <field name="model">project.project</field>
-        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
+            <page name="settings" position="inside">
+                <group>
+                    <group string="Gantt Info">
+                        <field name="gantt_color" />
+                    </group>
+                </group>
+            </page>
             <!-- Add our new fields after the tasks notebook page -->
             <notebook position="inside">
                 <page string="Planning" id="planning">
@@ -20,7 +27,10 @@
                                 <field name="resource_id" mapping="resource_id" />
                                 <field name="start_date" mapping="start_date" />
                                 <field name="end_date" mapping="end_date" />
-                                <field name="plan_start_date" mapping="plan_start_date" />
+                                <field
+                                    name="plan_start_date"
+                                    mapping="plan_start_date"
+                                />
                                 <field name="plan_end_date" mapping="plan_end_date" />
                                 <!-- Add more fields from project.planning as needed -->
                             </tree>

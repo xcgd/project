@@ -37,7 +37,11 @@ License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
         <field name="name">project_planning_jsgantt</field>
         <field name="model">project.planning</field>
         <field name="arch" type="xml">
-            <jsgantt>
+            <jsgantt
+                time_format="month"
+                show_duration="true"
+                on_task_click="open_record"
+            >
                 <field name="name" mapping="name" />
                 <field name="parent_id" mapping="parent_id" />
                 <field name="is_parent" mapping="is_parent" />
@@ -47,19 +51,27 @@ License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
                 <field name="end_date" mapping="end_date" />
                 <field name="plan_start_date" mapping="plan_start_date" />
                 <field name="plan_end_date" mapping="plan_end_date" />
+                <field name="dependency_ids" mapping="dependency_ids" />
+                <field name="color_class" mapping="class" />
             </jsgantt>
         </field>
     </record>
 
     <record id="project_planning_action" model="ir.actions.act_window">
-        <field name="name">Project Planning</field>
+        <field name="name">Gantt view of projects and tasks</field>
         <field name="res_model">project.planning</field>
         <field name="view_mode">jsgantt</field>
     </record>
     <menuitem
         id="project_planning_menu"
-        action="project_planning_action"
-        parent="project.menu_project_report"
+        name="Gantt"
         sequence="5"
-    />
+        parent="project.menu_main_pm"
+    >
+      <menuitem
+            id="project_planning_gantt_menu"
+            name="Gantt view of projects and tasks"
+            action="project_planning_action"
+        />
+    </menuitem>
 </odoo>

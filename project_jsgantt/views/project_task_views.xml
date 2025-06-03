@@ -7,6 +7,13 @@ License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
+            <page name="extra_info" position="inside">
+                <group>
+                    <group string="Gantt Info">
+                        <field name="gantt_color" />
+                    </group>
+                </group>
+            </page>
             <page name="sub_tasks_page" position="after">
                 <page string="Planning">
                     <field name="planning_ids" widget="jsgantt" nolabel="1">

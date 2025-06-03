@@ -1,0 +1,210 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_jsgantt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-03 16:07+0000\n"
+"PO-Revision-Date: 2025-06-03 18:09+0200\n"
+"Last-Translator: \n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Poedit 3.6\n"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,help:project_jsgantt.field_project_task__planning_ids
+msgid "All planning records in the task hierarchy."
+msgstr "Tous les enregistrements de planification dans la hiérarchie des tâches."
+
+#. module: project_jsgantt
+#: model:ir.model.fields.selection,name:project_jsgantt.selection__project_project__gantt_color__blue
+#: model:ir.model.fields.selection,name:project_jsgantt.selection__project_task__gantt_color__blue
+msgid "Blue"
+msgstr "Blue"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__color_class
+msgid "CSS Color Class"
+msgstr "Classe de couleur CSS"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,help:project_jsgantt.field_project_planning__color_class
+msgid "CSS class for task/project color"
+msgstr "Classe CSS pour la couleur de la tâche/projet"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,help:project_jsgantt.field_project_project__gantt_color
+msgid "Color used to display the project in the planning view"
+msgstr " Couleur utilisée pour afficher le projet dans la vue de planification"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,help:project_jsgantt.field_project_task__gantt_color
+msgid "Color used to display the task in the planning view"
+msgstr "Couleur utilisée pour afficher la tâche dans la vue de planification"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__dependency_ids
+msgid "Dependencies"
+msgstr "Dépendances"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__end_date
+msgid "End Date"
+msgstr "Date de fin"
+
+#. module: project_jsgantt
+#: model:ir.ui.menu,name:project_jsgantt.project_planning_menu
+msgid "Gantt"
+msgstr "Gantt"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_project__gantt_color
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_task__gantt_color
+msgid "Gantt Color"
+msgstr "Couleur Gantt"
+
+#. module: project_jsgantt
+#: model_terms:ir.ui.view,arch_db:project_jsgantt.project_project_view_form_inherit
+#: model_terms:ir.ui.view,arch_db:project_jsgantt.quick_create_task_form
+msgid "Gantt Info"
+msgstr "Infos Gantt"
+
+#. module: project_jsgantt
+#: model:ir.actions.act_window,name:project_jsgantt.project_planning_action
+#: model:ir.ui.menu,name:project_jsgantt.project_planning_gantt_menu
+msgid "Gantt view of projects and tasks"
+msgstr "Vue Gantt des projets et tâches"
+
+#. module: project_jsgantt
+#: model:ir.model.fields.selection,name:project_jsgantt.selection__project_project__gantt_color__green
+#: model:ir.model.fields.selection,name:project_jsgantt.selection__project_task__gantt_color__green
+msgid "Green"
+msgstr "Vert"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__id
+msgid "ID"
+msgstr ""
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__is_expanded
+msgid "Is Expanded"
+msgstr "Est développé"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__is_parent
+msgid "Is Parent"
+msgstr "Est parent"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__parent_id
+msgid "Parent"
+msgstr "Parent"
+
+#. module: project_jsgantt
+#: model:ir.model.fields.selection,name:project_jsgantt.selection__project_project__gantt_color__pink
+#: model:ir.model.fields.selection,name:project_jsgantt.selection__project_task__gantt_color__pink
+msgid "Pink"
+msgstr "Rose"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__plan_end_date
+msgid "Plan End Date"
+msgstr "Date de fin prévue"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__plan_start_date
+msgid "Plan Start Date"
+msgstr "Date de début prévue"
+
+#. module: project_jsgantt
+#: model_terms:ir.ui.view,arch_db:project_jsgantt.project_project_view_form_inherit
+#: model_terms:ir.ui.view,arch_db:project_jsgantt.quick_create_task_form
+msgid "Planning"
+msgstr "Planification"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_task__planning_ids
+msgid "Planning Records"
+msgstr "Enregistrements de planification"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,help:project_jsgantt.field_project_project__project_planning_ids
+msgid "Planning records associated with tasks in this project"
+msgstr "Enregistrements de planification associés aux tâches de ce projet"
+
+#. module: project_jsgantt
+#: model:ir.model,name:project_jsgantt.model_project_project
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__project_id
+msgid "Project"
+msgstr "Projet"
+
+#. module: project_jsgantt
+#: model:ir.model,name:project_jsgantt.model_project_planning
+msgid "Project Planning"
+msgstr "Planification du projet"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_project__project_planning_ids
+msgid "Project Planning Records"
+msgstr "Enregistrements de planification du projet"
+
+#. module: project_jsgantt
+#: model:ir.model.fields.selection,name:project_jsgantt.selection__project_project__gantt_color__purple
+#: model:ir.model.fields.selection,name:project_jsgantt.selection__project_task__gantt_color__purple
+msgid "Purple"
+msgstr "Violet"
+
+#. module: project_jsgantt
+#: model:ir.model.fields.selection,name:project_jsgantt.selection__project_project__gantt_color__red
+#: model:ir.model.fields.selection,name:project_jsgantt.selection__project_task__gantt_color__red
+msgid "Red"
+msgstr "Rouge"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__resource_id
+msgid "Resource"
+msgstr "Ressource"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__start_date
+msgid "Start Date"
+msgstr "Date de début"
+
+#. module: project_jsgantt
+#: model:ir.model,name:project_jsgantt.model_project_task
+#: model:ir.model.fields,field_description:project_jsgantt.field_project_planning__task_id
+msgid "Task"
+msgstr "Tâche"
+
+#. module: project_jsgantt
+#: model:ir.model.fields,help:project_jsgantt.field_project_planning__dependency_ids
+msgid "Task dependencies based on task links"
+msgstr "Dépendances des tâches basées sur les liens entre les tâches"
+
+#. module: project_jsgantt
+#: model:ir.model.fields.selection,name:project_jsgantt.selection__project_project__gantt_color__yellow
+#: model:ir.model.fields.selection,name:project_jsgantt.selection__project_task__gantt_color__yellow
+msgid "Yellow"
+msgstr "Jaune"

@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+project_planning_user_access,project_planning_user_access,model_project_planning,project.group_project_user,1,0,0,0
 project_planning_manager_access,project_planning_manager_access,model_project_planning,project.group_project_manager,1,1,1,1
